@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
 :root {
   --deep-plum: #3A2E39;
   --teal-blue: #1E555C;
@@ -10,9 +12,10 @@
 
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Merriweather', serif;
   background-color: var(--blush-cream);
   color: var(--deep-plum);
+  overflow-x: hidden;
 }
 /* Header */
 header {
@@ -67,24 +70,251 @@ header nav a {
 @media (max-width: 768px) {
     .header-menu-toggle {
         display: flex;
-    }
-    header nav {
+        align-items: center;
+        justify-content: flex-end;
+        margin: 0;
+        }
+        header nav {
         position: absolute;
         top: 60px;
         left: 0;
         width: 100vw;
         background: var(--deep-plum);
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         display: none;
         padding: 20px 0;
         box-sizing: border-box;
-    }
-    header nav.active {
+        }
+        header nav.active {
         display: flex;
-    }
-    header nav a {
+        }
+        header nav a {
         margin: 10px 20px;
         width: 100%;
+        text-align: center;
+        }
+    }
+    .header-menu-toggle.open span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .header-menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .header-menu-toggle.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+/* Main content */
+main {
+    padding: 100px 20px 20px;
+    box-sizing: border-box;
+}
+
+/* Hero section */
+#hero {
+  background-color: var(--peach);
+  color: var(--white);
+  position: relative;
+}
+#hero {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.home-content {
+  width: 100%;
+  height: 100%;
+}
+
+.home-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image covers entire area without distortion */
+  display: block;
+}
+
+.home-text {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  text-align: left;
+  color: var(--black);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quote-icon {
+  font-size: 10rem;
+  margin: 0;
+  line-height: 0.9;
+  color: var(--deep-plum);
+  position: relative;
+  left: -30px; 
+  top: 100px;   
+}
+
+.home-text h2 {
+  font-size: 3rem;
+  margin: 0;
+  position: relative;
+  left: 50px;
+}
+
+.line-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.line-name p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: var(--black);
+  white-space: nowrap;
+}
+
+.line-name .line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--black);
+  max-width: 200px;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10; 
+}
+
+.button-container button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.3rem;
+  color: white;
+  background-color: var(--deep-plum);
+  opacity: 0.95;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  border: none;
+}
+
+.button-container button:hover {
+  background-color: rgba(0, 0, 0, 0); 
+  color: var(--deep-plum);
+}
+
+@media (max-width: 768px) {
+  .button-container button {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+}
+
+
+/* About section */
+
+#about {
+    background-color: #f1f1f1;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+#about .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#about .about-text {
+    flex: 1;
+    padding: 100px;
+    height: 100%;
+}
+
+#about .about-text h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#about .about-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #333;
+}
+
+#about .about-image {
+    position: relative;
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+#about .about-image img {
+    width: 90%;
+    height: 75vh;
+    border-radius: 500px 0 0 500px; /* curved left, flat right */
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+    display: block;
+    border-left: 3rem solid #A47353; /* Border only on the curved side */
+    border-top: 3rem solid #A47353;
+    border-bottom: 3rem solid #A47353;
+    border-right: none;
+}
+
+/* Responsive styles for About section */
+@media (max-width: 900px) {
+    #about .about-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #about .about-text {
+        padding: 40px 20px 20px 20px;
+        width: auto;
+        background-color:#f1f1f1;
+;
+    }
+    #about .about-image {
+        justify-content: center;
+        width: 100vw;
+        min-width: 0;
+        margin-top: 20px;
+    }
+    #about .about-image img {
+        width: 80vw;
+        height: 300px;
+        border-radius: 300px 300px 0 0; /* curved top, flat bottom */
+        border-left: 2rem solid #A47353;
+        border-right: 2rem solid #A47353;
+        border-top: 2rem solid #A47353;
+        border-bottom: none;
+    }
+    #about {
+        height: auto;
     }
 }
+

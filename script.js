@@ -5,3 +5,8 @@ toggle.addEventListener('click', () => {
   nav.classList.toggle('active');
   toggle.classList.toggle('open');
 });
+
+function scrollToAbout() {
+  const aboutSection = document.querySelector('#about');
+  aboutSection.scrollIntoView({ behavior: 'smooth' });
+}
