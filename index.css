@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
 
 :root {
   --deep-plum: #3A2E39;
@@ -139,34 +140,34 @@ main {
 }
 
 .home-text {
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 800px;
-  text-align: left;
-  color: var(--black);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px;
+    text-align: left;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .quote-icon {
-  font-size: 10rem;
-  margin: 0;
-  line-height: 0.9;
-  color: var(--deep-plum);
-  position: relative;
-  left: -30px; 
-  top: 100px;   
+    font-size: 10rem;
+    margin: 0;
+    line-height: 0.9;
+    color: var(--peach);
+    position: relative;
+    left: -30px; 
+    top: 100px;
 }
 
 .home-text h2 {
-  font-size: 3rem;
-  margin: 0;
-  position: relative;
-  left: 50px;
+    font-size: 2.75rem;
+    margin: 0;
+    position: relative;
+    left: 50px;
 }
 
 .line-name {
@@ -179,16 +180,17 @@ main {
 
 .line-name p {
   margin: 0;
+  font-family: "Lavishly Yours", cursive;
   font-weight: 500;
   font-size: 1.2rem;
-  color: var(--black);
+  color: var(--peach);
   white-space: nowrap;
 }
 
 .line-name .line {
   flex: 1;
   height: 1px;
-  background-color: var(--black);
+  background-color: var(--peach);
   max-width: 200px;
 }
 
@@ -218,6 +220,15 @@ main {
 }
 
 @media (max-width: 768px) {
+    .quote-icon {
+        font-size: 9rem;
+    }
+    .home-text h2 {
+        font-size: 2.25rem;
+    }
+    .home-text p{
+        font-size: 1.2rem;
+    }
   .button-container button {
     font-size: 1rem;
     padding: 12px 20px;
@@ -282,9 +293,9 @@ main {
     margin: 0;
     padding: 0;
     display: block;
-    border-left: 3rem solid #A47353; /* Border only on the curved side */
-    border-top: 3rem solid #A47353;
-    border-bottom: 3rem solid #A47353;
+    border-left: 3rem solid var(--peach); /* Border only on the curved side */
+    border-top: 3rem solid var(--peach);
+    border-bottom: 3rem solid var(--peach);
     border-right: none;
 }
 
@@ -293,7 +304,7 @@ main {
     #about .about-content {
         flex-direction: column;
         align-items: flex-start;
-        border-bottom: #A47353 1rem solid;
+        border-bottom: #A47353 0.1rem solid;
     }
     #about .about-text {
         padding: 40px 20px 20px 20px;
@@ -320,4 +331,73 @@ main {
         height: auto;
     }
 }
+
+#social-media-experience {
+  padding: 40px;
+  background-color: #f5f5f5;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 4px solid white;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+}
+
+.experience-header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.experience-header .script {
+  font-family: "Lavishly Yours", cursive;
+  font-size: 2.5rem;
+  margin-right: 10px;
+}
+
+.company-dates {
+  font-size: 0.9rem;
+  margin-top: 8px;
+  color: #444;
+}
+
+.experience-header img {
+  height: 40px;
+}
+
+.experience-columns {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.column {
+  background: white;
+  padding: 20px;
+  border-radius: 6px;
+  flex: 1 1 300px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.column h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.column p, .column li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.column ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+
 
