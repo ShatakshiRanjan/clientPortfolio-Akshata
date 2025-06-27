@@ -222,16 +222,19 @@ main {
 @media (max-width: 768px) {
     .quote-icon {
         font-size: 9rem;
+        opacity: 0.85;
+        left: -20px;
     }
     .home-text h2 {
         font-size: 2rem;
+        left: 0;
     }
     .home-text p{
         font-size: 1.2rem;
     }
   .button-container button {
     font-size: 1rem;
-    padding: 20px 20px;
+    padding: 12px 20px;
   }
 }
 
@@ -332,6 +335,7 @@ main {
     }
 }
 
+/* Experience section */
 #social-media-experience {
   padding: 90px 40px 60px; /* More top padding to show header */
   background: linear-gradient(135deg, #f1f1f1 0%, #e9ecef 100%);
