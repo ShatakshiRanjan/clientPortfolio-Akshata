@@ -14,7 +14,7 @@
 body {
   margin: 0;
   font-family: 'Merriweather', serif;
-  background-color: var(--blush-cream);
+  background-color: #f1f1f1;
   color: var(--deep-plum);
   overflow-x: hidden;
 }
@@ -238,7 +238,6 @@ main {
 /* About section */
 
 #about {
-    background-color: #f1f1f1;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -334,7 +333,6 @@ main {
 /* Experience section */
 #social-media-experience {
   padding: 90px 40px 60px; /* More top padding to show header */
-  background: linear-gradient(135deg, #f1f1f1 0%, #e9ecef 100%);
   min-height: 100vh;
   box-sizing: border-box;
   display: flex;
@@ -509,6 +507,38 @@ html {
     background-position: 120px 0; /* moves pattern diagonally */
   }
 }
+
+/* Results gallery */
+#social-results {
+  padding: 40px 40px;
+  box-sizing: border-box;
+}
+
+.results-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.results-gallery img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.results-gallery img:hover {
+  transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+  .results-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 
 #under-construction .uc-inner {
   background: rgba(255, 255, 255, 0.9);
