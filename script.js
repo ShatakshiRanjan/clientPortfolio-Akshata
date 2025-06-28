@@ -10,3 +10,15 @@ function scrollToAbout() {
   const aboutSection = document.querySelector('#about');
   aboutSection.scrollIntoView({ behavior: 'smooth' });
 }
+
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.scroll-fade').forEach(el => observer.observe(el));
