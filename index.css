@@ -517,22 +517,24 @@ html {
 }
 
 #sales-advertisement-experience {
+  padding: 90px 40px 60px; /* More top padding to show header */
   min-height: 100vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 /* ── storyboard layout ───────────────────── */
 .story-block {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 4rem;
   padding: 60px 40px;
+  position: relative; /* Needed for parallax context */
+  overflow: hidden;
 }
+
 .story-block:nth-child(even) {
   flex-direction: row-reverse;
 }
@@ -545,22 +547,36 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 12px;
+  z-index: 1;
 }
 
 /* ── text block ──────────────────────────── */
 .story-block .text {
-  
+  flex: 1 1 55%;
+  background: #fff;
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transform: translateY(50px);
-  opacity: 0;
-  transition: transform 0.6s ease, opacity 0.6s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,.05);
+
+  /* Parallax effect */
+  position: relative;
+  z-index: 2;
+  will-change: transform, opacity;
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1), opacity 0.3s;
+  /* Default state: no transform */
+  transform: translateY(var(--parallax-offset, 0px));
+  opacity: 1;
 }
+
+/* Parallax effect: JS will update --parallax-offset on scroll */
+
+/* (optional) nice to keep if you still use IntersectionObserver
+   to fade/slide items into view the first time they appear)      */
 .story-block .text.in-view {
   transform: translateY(0);
   opacity: 1;
 }
+
 .story-block .text h3 {
   margin: 0 0 14px;
   font-size: 1.5rem;
@@ -585,17 +601,29 @@ html {
   .story-block {
     flex-direction: column;
     gap: 2rem;
+    align-items: center; /* Center align text and image */
   }
   .story-block:nth-child(even) {
     flex-direction: column;
+    align-items: center; /* Center align for even blocks too */
   }
   .story-block .image {
     width: 100%;
     aspect-ratio: 3 / 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: contain !important; /* Show whole image, no cropping */
+    background-repeat: no-repeat;
+    background-position: center;
   }
   .story-block .text {
     width: 100%;
     padding: 32px;
+    text-align: center; /* Center text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
