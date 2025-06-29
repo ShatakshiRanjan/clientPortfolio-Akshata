@@ -11,43 +11,42 @@ function scrollToAbout() {
   aboutSection.scrollIntoView({ behavior: 'smooth' });
 }
 
-// utilities ------------------------------------------------------
-const clamp  = (v,min,max) => Math.max(min, Math.min(max, v));
-const blocks = Array.from(document.querySelectorAll('.story-block'));
-// core routine ---------------------------------------------------
-function parallax() {
-  if (window.innerWidth < 769) { // disable on mobile
-    blocks.forEach(b => b.querySelector('.text').style.transform = '');
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+/* bubble & section refs */
+const aboutSection = document.getElementById('about');
+const bubble       = document.querySelector('.speech-bubble');
+
+function animateBubble() {
+  /* disable effect on small and medium screens */
+  if (window.innerWidth < 768) {
+    bubble.style.opacity   = 1;
+    bubble.style.transform = 'translate(0,0) rotate(-5deg)';
     return;
   }
 
-  const header = document.querySelector('header');
-  const headerHeight = header ? header.offsetHeight : 0;
-  const vh = window.innerHeight - headerHeight;
+  const rect = aboutSection.getBoundingClientRect();
+  const vh   = window.innerHeight;
 
-  blocks.forEach(block => {
-    const img = block.querySelector('.image');
-    const txt = block.querySelector('.text');
+  /* progress: 0 when section bottom meets viewport top
+               1 when section top meets viewport bottom */
+  const start    = vh;
+  const end      = -rect.height;
+  const progress = clamp((start - rect.top) / (start - end), 0, 1);
 
-    // how far can the text travel?
-    const travel = img.offsetHeight - txt.offsetHeight;
-    if (travel <= 0) return; // nothing to animate
+  /* translate bubble ±120 px on a soft arc (up on entry, down on exit) */
+  const y = (0.5 - progress) * 240;                     //  -120 → 0 → +120
+  const x = Math.sin(progress * Math.PI) * -40;         // small sideways arc
 
-    // progress (0 → 1) while the block is on-screen
-    const rect = block.getBoundingClientRect();
-    const start = vh; // block's top hits bottom of viewport (below header)
-    const end = -window.innerHeight; // block's bottom hits top of viewport (end at 100vh above)
-    const progress = clamp((start - rect.top) / (start - end), 0, 1);
+  bubble.style.transform =
+    `translate(${x}px, ${y}px) rotate(-5deg)`;
 
-    // apply translation (positive = move downward)
-    txt.style.transform = `translateY(${progress * travel}px)`;
-
-    // subtle fade-in/out (optional — delete if unwanted)
-    txt.style.opacity = 1 - Math.abs(progress - 0.5) * 2;
-  });
+  /* fade near edges */
+  bubble.style.opacity =
+    1 - Math.abs(progress - 0.5) * 2;                   // 1 → 0 → 1
 }
 
-// run once and on scroll/resize ----------------------------------
-parallax();
-window.addEventListener('scroll', () => requestAnimationFrame(parallax));
-window.addEventListener('resize', parallax);
+/* ---------- hook it up ---------- */
+animateBubble();                                        // initial position
+window.addEventListener('scroll',  () => requestAnimationFrame(animateBubble));
+window.addEventListener('resize', animateBubble);

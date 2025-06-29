@@ -235,100 +235,129 @@ main {
   }
 }
 
-/* About section */
+/* ───────────────  ABOUT SECTION  ─────────────── */
 
 #about {
-    height: 100vh;
-    display: flex;
-    align-items: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
+/* ── main flex wrapper (text ←→ image) ── */
 #about .about-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
 }
 
+/* ── text column ── */
 #about .about-text {
-    flex: 1;
-    padding: 100px;
-    height: 100%;
+  flex: 1;
+  padding: 100px;
+  height: 100%;
 }
 
 #about .about-text h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 50px;
-    color: var(--peach);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 50px;
+  color: var(--peach);
 }
 
 #about .about-text p {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #333;
-    padding-right: 20px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+  padding-right: 20px;
 }
 
+/* ── image column (portrait + speech bubble) ── */
 #about .about-image {
-    position: relative;
-    flex: 1;
-    min-width: 300px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin: 0;
-    padding: 0;
+  position: relative;             /* bubble is absolutely-positioned here */
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 300px;
+  margin: 0;
 }
 
-#about .about-image img {
-    width: 90%;
-    height: 75vh;
-    border-radius: 500px 0 0 500px; /* curved left, flat right */
-    object-fit: cover;
-    margin: 0;
-    padding: 0;
-    display: block;
-    border-left: 3rem solid var(--peach); /* Border only on the curved side */
-    border-top: 3rem solid var(--peach);
-    border-bottom: 3rem solid var(--peach);
-    border-right: none;
+/* portrait photo */
+#about .about-image img.portrait {
+  width: 90%;
+  height: 75vh;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  border-radius: 500px 0 0 500px;   
+
+  border-left:   3rem solid var(--peach);
+  border-top:    3rem solid var(--peach);
+  border-bottom: 3rem solid var(--peach);
+  border-right:  none;
 }
 
-/* Responsive styles for About section */
-@media (max-width: 900px) {
-    #about .about-content {
-        flex-direction: column;
-        align-items: flex-start;
-        border-bottom: var(--peach) 0.1rem solid;
-    }
-    #about .about-text {
-        padding: 40px 20px 20px 20px;
-        width: auto;
-        background-color:#f1f1f1;
-;
-    }
-    #about .about-image {
-        justify-content: center;
-        width: 100vw;
-        min-width: 0;
-        margin-top: 20px;
-    }
-    #about .about-image img {
-        width: 80vw;
-        height: 300px;
-        border-radius: 300px 300px 0 0; /* curved top, flat bottom */
-        border-left: 2rem solid var(--peach);
-        border-right: 2rem solid var(--peach);
-        border-top: 2rem solid var(--peach);
-        border-bottom: none;
-    }
-    #about {
-        height: auto;
-    }
+#about .about-image img.speech-bubble {
+  position: absolute;
+  width: 55%;
+  top: 35px;
+  right: 60%;
+  transform: translate(0,0) rotate(-5deg);   /* JS rewrites the translate */
+  will-change: transform, opacity;           /* smooth, no repaints       */
+  z-index: 3;
+  pointer-events: none;
 }
+
+@media (max-width: 769px) {
+
+  /* stack text + image */
+  #about {
+    height: auto;
+  }
+  #about .about-content {
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 0.1rem solid var(--peach);
+    padding: 20px 20px 0px 0px;
+  }
+
+  /* text block */
+  #about .about-text {
+    padding: 40px 20px 20px;
+    width: auto;
+    background-color: #f1f1f1;
+  }
+
+  /* portrait */
+  #about .about-image {
+    justify-content: center;
+    width: 100vw;
+    min-width: 0;
+    margin-top: 20px;
+  }
+  #about .about-image img.portrait {
+    width: 80vw;
+    height: 300px;
+    border-radius: 300px 300px 0 0;   /* curved top, flat bottom */
+    border-left:   2rem solid var(--peach);
+    border-right:  2rem solid var(--peach);
+    border-top:    2rem solid var(--peach);
+    border-bottom: none;
+  }
+
+  /* bubble – centre it above the new curved top */
+  #about .about-image img.speech-bubble {
+    width: 220px;
+    top: -10px;
+    left: 1%;
+    right: auto;
+    transform: translateX(-50%) rotate(-5deg);
+  }
+}
+
 
 /* Experience section */
 #social-media-experience {
