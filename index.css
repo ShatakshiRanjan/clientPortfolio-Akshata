@@ -473,10 +473,6 @@ main {
   color: var(--peach);
 }
 
-/* Optional scroll fix for sticky header (if needed) */
-html {
-  scroll-padding-top: 60px;
-}
 
 
 @keyframes slide-stripes {
@@ -495,7 +491,7 @@ html {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 25px 75px;
 }
 
 .results-gallery img {
@@ -517,7 +513,7 @@ html {
 }
 
 #sales-advertisement-experience {
-  padding: 90px 40px 60px; /* More top padding to show header */
+  padding: 90px 40px 60px; 
   min-height: 100vh;
   box-sizing: border-box;
   display: flex;
@@ -531,7 +527,7 @@ html {
   justify-content: center;
   gap: 4rem;
   padding: 60px 40px;
-  position: relative; /* Needed for parallax context */
+  position: relative; 
   overflow: hidden;
 }
 
