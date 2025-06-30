@@ -100,3 +100,30 @@ document.addEventListener('DOMContentLoaded', () => {
    animateBubble();
   });
 });
+
+document.addEventListener('scroll', () => {
+  const lines = document.querySelectorAll('.about-text h2, .about-text p');
+  lines.forEach(line => {
+    const rect = line.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      line.classList.add('in-view');
+      line.style.transform = 'translateX(0)';
+      line.style.opacity = '1';
+      line.style.transition = 'transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s';
+    } else {
+      line.classList.remove('in-view');
+      line.style.transform = 'translateX(-60px)';
+      line.style.opacity = '0';
+      line.style.transition = 'transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s';
+    }
+  });
+});
+
+// Optional: Initialize state on load
+window.addEventListener('DOMContentLoaded', () => {
+  const lines = document.querySelectorAll('.about-text h2, .about-text p');
+  lines.forEach(line => {
+    line.style.transform = 'translateX(-60px)';
+    line.style.opacity = '0';
+  });
+});

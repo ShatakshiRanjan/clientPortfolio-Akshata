@@ -258,6 +258,16 @@ main {
   flex: 1;
   padding: 100px;
   height: 100%;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.7s cubic-bezier(.4,2,.6,1), transform 0.7s cubic-bezier(.4,2,.6,1);
+  will-change: opacity, transform;
+}
+
+/* When scrolled out, move left and fade */
+#about .about-text.out-left {
+  opacity: 0;
+  transform: translateX(-80px);
 }
 
 #about .about-text h2 {
@@ -276,7 +286,7 @@ main {
 
 /* ── image column (portrait + speech bubble) ── */
 #about .about-image {
-  position: relative;             /* bubble is absolutely-positioned here */
+  position: relative;         
   flex: 1;
   display: flex;
   justify-content: flex-end;
