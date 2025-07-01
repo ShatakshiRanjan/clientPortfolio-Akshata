@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('scroll', () => {
-  const lines = document.querySelectorAll('.about-text h2, .about-text p');
+  const lines = document.querySelectorAll('.about-text');
   lines.forEach(line => {
     const rect = line.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -121,7 +121,7 @@ document.addEventListener('scroll', () => {
 
 // Optional: Initialize state on load
 window.addEventListener('DOMContentLoaded', () => {
-  const lines = document.querySelectorAll('.about-text h2, .about-text p');
+  const lines = document.querySelectorAll('.about-text');
   lines.forEach(line => {
     line.style.transform = 'translateX(-60px)';
     line.style.opacity = '0';
